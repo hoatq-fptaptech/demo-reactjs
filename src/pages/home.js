@@ -24,7 +24,7 @@ export default class Home extends React.Component{
     async getCategories(){
         try {
             const cat = db.collection("categories");
-            const data = await cat.get();
+            const data = await cat.where("name","==","Watch").orderBy("name","desc").limit(3).get();
             const cats = [];
             data.docs.map((doc)=>{
                 const d = doc.data();
