@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import db from "../db";
 import UserContext from "../store/context";
-
+import Demohook from "./demohook";
 export default class Home extends React.Component{
     static contextType = UserContext;
     constructor(props) {
@@ -74,6 +74,7 @@ export default class Home extends React.Component{
                     return <li key={k}>{v.title}</li>
                 })}
             </ul>
+            <Demohook title="abc"/>
             <h1>categories</h1>
             {
                 cats.map((v,k)=>{
