@@ -1,8 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import db from "../db";
+import UserContext from "../store/context";
 
 export default class Home extends React.Component{
+    static contextType = UserContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -61,11 +63,12 @@ export default class Home extends React.Component{
 
     render() {
         const cats = this.state.categories;
+        const color = this.context.color;
         return (<div>
             <NavLink to="/login"  className={({ isActive }) =>
                 isActive ? "active" : ""
             }>Login </NavLink>
-            <h1>Home</h1>
+            <h1>Home {color}</h1>
             <ul>
                 {this.state.data.map((v,k)=>{
                     return <li key={k}>{v.title}</li>
