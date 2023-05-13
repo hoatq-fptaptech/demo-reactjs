@@ -1,4 +1,5 @@
 const initState = {
-    color:"red"
+    color:"red",
+    count:0
 }
  export default initState;

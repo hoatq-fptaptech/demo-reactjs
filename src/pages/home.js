@@ -11,6 +11,7 @@ export default class Home extends React.Component{
             data: [],
             categories:[]
         }
+        this.changeColor = this.changeColor.bind(this);
     }
     async componentDidMount() {
         fetch("https://dummyjson.com/products?limit=20")
@@ -60,15 +61,19 @@ export default class Home extends React.Component{
             console.log(err);
         }
     }
-
+    changeColor(){
+        this.context.dispatch({type:"up"});
+    }
     render() {
         const cats = this.state.categories;
-        const color = this.context.color;
+        const state = this.context.state;
+        // console.log(color);
         return (<div>
             <NavLink to="/login"  className={({ isActive }) =>
                 isActive ? "active" : ""
             }>Login </NavLink>
-            <h1>Home {color}</h1>
+            <h1>Home {state.color} {state.count}</h1>
+            <button onClick={this.changeColor}>Color</button>
             <ul>
                 {this.state.data.map((v,k)=>{
                     return <li key={k}>{v.title}</li>
